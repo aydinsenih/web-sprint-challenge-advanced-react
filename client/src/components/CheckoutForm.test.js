@@ -28,10 +28,14 @@ test("form shows success message on submit with form details", async () => {
   const button = screen.getByRole("button");
   userEvent.click(button);
 
-  expect(await screen.findByText(/Senih/)).toBeInTheDocument();
-  expect(await screen.findByText(/Aydin/)).toBeInTheDocument();
-  expect(await screen.findByText(/1234 Washington blvd./)).toBeInTheDocument();
-  expect(await screen.findByText(/Los Angeles/)).toBeInTheDocument();
-  expect(await screen.findByText(/CA/)).toBeInTheDocument();
-  expect(await screen.findByText(/90232/)).toBeInTheDocument();
+  const success = await screen.findByTestId(/successMessage/i);
+  expect(success).toBeInTheDocument();
+  expect(await screen.findByText(/Senih/)).toBeInTheDocument(success);
+  expect(await screen.findByText(/Aydin/)).toBeInTheDocument(success);
+  expect(await screen.findByText(/1234 Washington blvd./)).toBeInTheDocument(
+    success
+  );
+  expect(await screen.findByText(/Los Angeles/)).toBeInTheDocument(success);
+  expect(await screen.findByText(/CA/)).toBeInTheDocument(success);
+  expect(await screen.findByText(/90232/)).toBeInTheDocument(success);
 });
