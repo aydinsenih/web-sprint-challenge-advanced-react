@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 
-const useForm = (initialValue) => {
+const initialValue = {
+  firstName: "",
+  lastName: "",
+  address: "",
+  city: "",
+  state: "",
+  zip: "",
+};
+
+const useForm = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [values, setValues] = useState(initialValue);
 
